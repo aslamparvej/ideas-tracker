@@ -1,0 +1,61 @@
+/* ------------- Google Fonts :: Begins ------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+/* ------------- Google Fonts :: Ends ------------- */
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --PRIMARY-COLOR: #0D9276;
+  --TEXT-COLOR: #333;
+  --LINK-COLOR: #6EA1E5;
+  --BORDER-COLOR: #DEDEDE;
+
+  --PRIMARY-BORDER: 1px solid var(--BORDER-COLOR);
+  --BORDER-RADIUS-SM: 5px;
+}
+
+input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color: transparent;
+  color: fieldtext !important;
+}
+
+a {
+  text-decoration: none;
+  color: var(--LINK-COLOR);
+}
+
+/* ------------- Button components :: Begins ------------- */
+.custom-btn {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: var(--BORDER-RADIUS-SM);
+  cursor: pointer;
+}
+.custom-btn-outline {
+  color: var(--PRIMARY-COLOR);
+  background-color: transparent;
+  border: 1px solid var(--PRIMARY-COLOR);
+}
+.custom-btn-primary {
+  color: #FFF;
+  background-color: var(--PRIMARY-COLOR);
+  border: 1px solid var(--PRIMARY-COLOR);
+}
+.custom-btn-white {
+  background-color: var(--PRIMARY-COLOR);
+  border: 1px solid var(--PRIMARY-COLOR);
+}
+/* ------------- Button components :: Ends ------------- */
+
+.d-none {
+  display: none;
+}

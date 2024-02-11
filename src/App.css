@@ -1,0 +1,194 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+}
+/* --------- Header section :: Begins --------- */
+.app-container header {
+  width: 80%;
+  height: 4rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.app-container header .logo {
+  color: var(--PRIMARY-COLOR);
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.app-container header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 4rem;
+}
+.app-container header nav ul li .nav-item {
+  color: var(--TEXT-COLOR);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+/* --------- Header section :: Ends --------- */
+
+/* --------- Home section :: Begins --------- */
+.app-container .home-container, 
+.app-container .add-idea-container {
+  width: 80%;
+  height: calc(100% - 4rem);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.app-container .submit-idea-form-container {
+  width: 30rem;
+  height: auto;
+  margin: 2rem auto;
+}
+.app-container .submit-idea-form-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.app-container .login-to-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.app-container .login-to-container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.app-container .login-to-container a {
+  font-size: 1rem;
+  font-weight: 500;
+}
+/* --------- Home section :: Ends --------- */
+
+/* --------- Form section :: Begins --------- */
+.app-container .form-container {
+  width: 100%;
+  height: calc(100% - 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app-container .login-container {
+  width: 25rem;
+  height: auto;
+  padding: 2rem;
+  border-radius: var(--BORDER-RADIUS-SM);
+  border: var(--PRIMARY-BORDER);
+}
+.app-container .form-title {
+  color: var(--TEXT-COLOR);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.app-container .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.app-container .form-group label {
+  color: var(--TEXT-COLOR);
+  margin-bottom: 0.5rem;
+}
+.app-container .form-group input,
+.app-container .form-group select {
+  color: var(--TEXT-COLOR);
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: var(--PRIMARY-BORDER);
+  border-radius: var(--BORDER-RADIUS-SM);
+}
+.app-container .form-group input:active,
+.app-container .form-group input:focus {
+  outline: none;
+  border: 1px solid var(--PRIMARY-COLOR);
+}
+.app-container .form-group textarea {
+  color: var(--TEXT-COLOR);
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: var(--PRIMARY-BORDER);
+  border-radius: var(--BORDER-RADIUS-SM);
+}
+.app-container .form-group textarea:active,
+.app-container .form-group textarea:focus {
+  outline: none;
+  border: 1px solid var(--PRIMARY-COLOR);
+}
+.app-container .button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 2rem;
+}
+.app-container .button-container button {
+  flex: 1;
+}
+.app-container .link-container {
+  text-align: center;
+}
+/* --------- Form section :: Ends --------- */
+
+/* --------- Ideas section :: Begins --------- */
+.app-container .ideas-container-section {
+  width: 100%;
+  margin: 3rem auto 0;
+}
+.app-container .ideas-container {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.app-container .idea-card {
+  width: 25rem;
+  height: auto;
+  border: var(--PRIMARY-BORDER);
+  border-radius: var(--BORDER-RADIUS-SM);
+}
+.app-container .idea-card .idea-card-header {
+  height: 3rem;
+  padding: 1rem;
+  border-bottom: var(--PRIMARY-BORDER);
+}
+.app-container .idea-card .idea-card-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.app-container .idea-card .idea-card-body {
+  height: calc(100% - 6rem);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.app-container .idea-link-container {
+  display: flex;
+  justify-content: space-between;
+}
+.app-container .idea-link-container a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.app-container .idea-card .idea-card-footer {
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  border-top: var(--PRIMARY-BORDER);
+}
+
+/* --------- Ideas section :: Ends --------- */
