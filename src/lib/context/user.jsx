@@ -20,26 +20,30 @@ export function UserProvider(props) {
     try {
       const loggedIn = await account.createEmailSession(email, passsword);
       setUser(loggedIn);
-      sessionStorage.setItem("current", JSON.stringify(loggedIn));
+      await init();
+      return loggedIn;
     } catch (error) {
       console.log("Something is wrong to login", error);
+      return false;
     }
   }
 
   async function logout() {
     try {
-      await account.deleteSession("current");
+      const logouted = await account.deleteSession("current");
       setUser(null);
-      sessionStorage.setItem("current", null);
+      return logouted;
     } catch (error) {
       console.log("Something is wrong to logout", error);
+      return null;
     }
   }
 
   async function register(email, passsword, name) {
     try {
-      await account.create(ID.unique(), email, passsword, name);
+      const userLogin =  await account.create(ID.unique(), email, passsword, name);
       await login(email, passsword);
+      return userLogin;
     } catch (error) {
         console.log("Something is wrong to register an user", error);
     }
@@ -48,8 +52,8 @@ export function UserProvider(props) {
   async function init() {
     try {
       const loggedIn = await account.get();
-    } catch (error) {
-      console.log("Error in user context", error);
+      setUser(loggedIn);
+    } catch (err) {
       setUser(null);
     }
   }

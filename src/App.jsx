@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/header/header';
@@ -13,8 +14,9 @@ import { IdeasProvider } from './lib/context/ideas';
 import './App.css';
 
 function App() {
-  const user = useUser();
-  const isLoginPage = window.location.pathname === "/login";
+  // const isLoginPage = window.location.pathname === "/login";
+
+  const [loading, setLoading] = useState(true)
 
   return (
     <BrowserRouter>
@@ -38,6 +40,4 @@ function App() {
   )
 }
 
-
-
-export default App
+export default App;

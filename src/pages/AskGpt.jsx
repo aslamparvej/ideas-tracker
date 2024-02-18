@@ -2,8 +2,7 @@ import React from 'react'
 
 const AskGpt = () => {
   return (
-    <div>
-      <h1>Ask GPT</h1>
+    <div className='ask-gpt-container'>
       <p>Work in progress</p>
     </div>
   )

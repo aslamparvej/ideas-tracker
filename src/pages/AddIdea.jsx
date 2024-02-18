@@ -1,18 +1,22 @@
 import React,{useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useUser } from '../lib/context/user';
 import { useIdeas } from '../lib/context/ideas';
 
+import Loading from './Loading';
+
 const AddIdea = () => {
     const user = useUser();
     const ideas = useIdeas();
+    const navigate = useNavigate()
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [githubLink, setGithubLink] = useState('');
     const [websiteLink, setWebsiteLink] = useState('');
     const [status, setStatus] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const STATUS = {
         COMPLETED: 'complated',
@@ -21,7 +25,20 @@ const AddIdea = () => {
         OPEN: 'open'
     }
 
+    const submitIdeaHandler = async ()=> {
+        setLoading(true);
+        const addidea = await ideas.add({ userId: user.current.$id, title, description, githubLink, websiteLink, status })
+        if(addidea){
+            navigate('/');
+            setLoading(false);
+        }else{
+            setLoading(false);
+        }
+    }
+
     return (
+       <>
+       {loading && <Loading />}
         <div className='add-idea-container'>
             {user.current ? (
                 <section className='submit-idea-form-container'>
@@ -58,7 +75,7 @@ const AddIdea = () => {
                         </div>
 
                         <div className='button-container'>
-                            <button type='button' className='custom-btn custom-btn-primary' onClick={() => ideas.add({ userId: user.current.$id, title, description, githubLink, websiteLink, status })}>Submit</button>
+                            <button type='button' className='custom-btn custom-btn-primary' onClick={submitIdeaHandler}>Submit</button>
                         </div>
 
                     </form>
@@ -70,6 +87,7 @@ const AddIdea = () => {
               </section>
             )}
         </div>
+       </>
     )
 }
 

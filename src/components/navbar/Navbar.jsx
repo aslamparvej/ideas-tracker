@@ -1,35 +1,64 @@
-import { Link } from 'react-router-dom';
-
-import HomeIcon from '@mui/icons-material/Home';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
-import InputIcon from '@mui/icons-material/Input';
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { useUser } from "../../lib/context/user";
 
+// Import components
+import UserProfile from "../ui/UserProfile";
 
 function Navbar() {
-    const user = useUser();
+  const user = useUser();
 
-    return (
-        <>
-            <nav>
-                <ul>
-                    <li className='nav-list'><Link to="/" className='nav-item'><HomeIcon />Home</Link></li>
-                    <li className='nav-list'><Link to="/ask-gpt" className='nav-item'><SmartToyIcon />Ask GPT</Link></li>
-                    {user.current ? (
-                        <>
-                            <li className='nav-list'><Link to="/add-idea" className='nav-item'><InputIcon />Add Idea</Link></li>
-                            <li className='nav-list'><span type='button' className='nav-item' onClick={() => user.logout()}><LogoutIcon />Logout</span></li>
-                        </>
-                    ) :
-                        <li className='nav-list'><Link to="/login" className='nav-item'><LoginIcon />Login</Link></li>
-                    }
-                </ul>
-            </nav>
-        </>
-    )
+  const [shortName, setShortName] = useState("");
+  const [showPrfile, setShowProfile] = useState(false);
+
+  useEffect(() => {
+    if (user.current) {
+      const nameArr = user.current.name?.split(" ");
+      if (nameArr) {
+        const shortNameVal = `${nameArr[0].charAt(0)}${nameArr[1].charAt(0)}`;
+        setShortName(shortNameVal);
+      }
+    }
+  }, [user]);
+
+  return (
+    <>
+      <nav>
+        <ul>
+          <li className="nav-list">
+            <Link to="/" className="nav-item nav-item-active">
+              Home
+            </Link>
+          </li>
+          <li className="nav-list">
+            <Link to="/ask-gpt" className="nav-item">
+              Ask GPT
+            </Link>
+          </li>
+          {user.current ? (
+            <>
+              <li className="nav-list">
+                <Link to="/add-idea" className="nav-item">
+                  Add Idea
+                </Link>
+              </li>
+              <li className="nav-list" style={{position: "relative"}}>
+                <span className="user-profile-btn" onClick={()=> setShowProfile(!showPrfile)}>{shortName}</span>
+                {showPrfile && <UserProfile />}
+              </li>
+            </>
+          ) : (
+            <li className="nav-list">
+              <Link to="/login" className="nav-item">
+                Login
+              </Link>
+            </li>
+          )}
+        </ul>
+      </nav>
+    </>
+  );
 }
 
 export default Navbar;

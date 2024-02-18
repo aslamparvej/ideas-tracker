@@ -2,6 +2,7 @@
   width: 100vw;
   height: 100vh;
 }
+
 /* --------- Header section :: Begins --------- */
 .app-container header {
   width: 80%;
@@ -22,6 +23,7 @@
 .app-container header nav ul {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 4rem;
 }
 .app-container header nav ul li .nav-item {
@@ -32,11 +34,84 @@
   gap: 0.3rem;
   cursor: pointer;
 }
+.app-container .nav-item.nav-item-active {
+  color: var(--PRIMARY-COLOR);
+}
+.app-container header .hamburger-menu-container {
+  display: none;
+}
+.app-container header .hamburger-menu {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: var(--BORDER-RADIUS-SM);
+  border: 1px solid var(--PRIMARY-COLOR);
+}
+.app-container header .hamburger-menu span{
+  width: 75%;
+  height: 3px;
+  display: inline-block;
+  background-color: var(--PRIMARY-COLOR);
+} 
+.app-container header .hamburger-menu-list-container {
+  width: 90%;
+  height: calc(100vh - 4rem);
+  position: fixed;
+  top: 4rem;
+  right: -100%;
+  background-color: var(--PRIMARY-COLOR);
+  transition: all 0.4s ease-in-out;
+}
+.app-container header .hamburger-menu-list-container.open-sidemenu {
+  right: 0;
+}
+
+
+.app-container .user-profile-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--PRIMARY-COLOR);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.app-container .user-profile-container {
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 10rem;
+  height: auto;
+  padding: 1rem;
+  text-align: center;
+  border-radius: var(--BORDER-RADIUS-SM);
+  background-color: #FFF;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+.app-container .user-profile-container p {
+  padding-bottom: 0.5rem;
+}
+.app-container .user-profile-container div {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.app-container .logout-btn {
+  cursor: pointer;
+}
 /* --------- Header section :: Ends --------- */
 
 /* --------- Home section :: Begins --------- */
-.app-container .home-container, 
-.app-container .add-idea-container {
+.app-container .home-container,
+.app-container .add-idea-container,
+.app-container .ask-gpt-container {
   width: 80%;
   height: calc(100% - 4rem);
   margin: 0 auto;
@@ -154,19 +229,43 @@
   margin-top: 2rem;
 }
 .app-container .idea-card {
-  width: 25rem;
+  width: calc(100% / 4 - 2rem);
   height: auto;
   border: var(--PRIMARY-BORDER);
   border-radius: var(--BORDER-RADIUS-SM);
 }
 .app-container .idea-card .idea-card-header {
   height: 3rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-bottom: var(--PRIMARY-BORDER);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .app-container .idea-card .idea-card-header h2 {
   font-size: 1rem;
   font-weight: 600;
+  max-width: 15rem;
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+.app-container .idea-card .idea-card-header .idea-action-btn {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--PRIMARY-BORDER);
+  border-radius: var(--BORDER-RADIUS-SM);
+  cursor: pointer;
+}
+.app-container .idea-card .idea-card-header .remove-idea-btn {
+  color: var(--DANGER-COLOR);
+  margin-right: 0.5rem;
+}
+.app-container .idea-card .idea-card-header .update-idea-btn {
+  color: var(--PRIMARY-COLOR);
 }
 
 .app-container .idea-card .idea-card-body {
@@ -189,6 +288,159 @@
   height: 3rem;
   padding: 0.5rem 1rem;
   border-top: var(--PRIMARY-BORDER);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-container .idea-card .idea-status {
+  font-size: 14px;
+  padding: 0.3rem 1rem;
+  border-radius: var(--BORDER-RADIUS-SM);
+}
+.app-container .idea-card .idea-status.idea-status-PENDING {
+  color: var(--DANGER-COLOR);
+  background-color: var(--DANGER-COLOR-BACKGROUND);
+  border: 1px solid var(--DANGER-COLOR);
+}
+.app-container .idea-card .idea-status.idea-status-COMPLETED {
+  color: var(--COMPLATED-COLOR);
+  background-color: var(--COMPLATED-COLOR-BACKGROUND);
+  border: 1px solid var(--COMPLATED-COLOR);
+}
+.app-container .idea-card .idea-status.idea-status-INPROGRESS {
+  color: var(--INPROGRESS-COLOR);
+  background-color: var(--INPROGRESS-COLOR-BACKGROUND);
+  border: 1px solid var(--INPROGRESS-COLOR);
+}
+.app-container .idea-card .idea-status.idea-status-OPEN {
+  color: var(--OPEN-COLOR);
+  background-color: var(--OPEN-COLOR-BACKGROUND);
+  border: 1px solid var(--OPEN-COLOR);
+}
+/* --------- Ideas section :: Ends --------- */
+
+/* --------- Ask GPT section :: Begins --------- */
+.app-container .ask-gpt-container {
+  justify-content: center;
+}
+.app-container .ask-gpt-container p {
+  padding: 0.5rem 1rem;
+  border: var(--PRIMARY-BORDER);
+  border-radius: 2.5rem;
+  position: relative;
+}
+.app-container .ask-gpt-container p::after,
+.app-container .ask-gpt-container p::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  /* background-color: var(--BORDER-COLOR); */
+  top: 50%;
+  transform: translateY(-50%);
+}
+.app-container .ask-gpt-container p::after {
+  right: -100%;
+  background: linear-gradient(272deg, transparent, var(--BORDER-COLOR));
+}
+.app-container .ask-gpt-container p::before {
+  left: -100%;
+  background: linear-gradient(272deg, var(--BORDER-COLOR), transparent);
+}
+/* --------- Ask GPT section :: Ends --------- */
+
+/* --------- Loading section :: Begins --------- */
+.app-container .loading-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(1px);
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--PRIMARY-COLOR);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
 
-/* --------- Ideas section :: Ends --------- */
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* --------- Loading section :: Ends --------- */
+
+
+/* --------- Media Query section :: Begins --------- */
+@media (max-width: 576px) {
+  .app-container .navbar-container {
+    display: none;
+  }
+  .app-container header .hamburger-menu-container {
+    display: block;
+  }
+  .app-container .ideas-container-section {
+    margin: 2rem auto 0;
+  }
+  .app-container .idea-card {
+    width: 100%;
+  }
+  .app-container .login-to-container h2 {
+    font-size: 1rem;
+  }
+  .app-container .login-container {
+    width: 90%;
+  }
+  .app-container .submit-idea-form-container {
+    width: 100%;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .app-container .navbar-container {
+    display: none;
+  }
+  .app-container header .hamburger-menu-container {
+    display: block;
+  }
+  .app-container .ideas-container-section {
+    margin: 2rem auto 0;
+  }
+  .app-container .idea-card {
+    width: 100%;
+  }
+  .app-container .login-to-container h2 {
+    font-size: 1rem;
+  }
+  .app-container .login-container {
+    width: 90%;
+  }
+  .app-container .submit-idea-form-container {
+    width: 100%;
+  }
+}
+@media (min-width: 769px) and (max-width: 992px) {
+  .app-container .idea-card {
+    width: calc(100% / 2 - 2rem);
+  }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+  .app-container .idea-card {
+    width: calc(100% / 3 - 2rem);
+  }
+}
+@media (min-width: 1400px) {
+
+}
+/* --------- Media Query section :: Ends --------- */
