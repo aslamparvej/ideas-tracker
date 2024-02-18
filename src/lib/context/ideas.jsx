@@ -3,6 +3,8 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { ID, Query } from "appwrite";
 import { databases } from "../appwrite";
 
+const IDEAS_DATABASE_ID = `${import.meta.env.VITE_APPWRITE_IDEAS_DATABASE_ID}`;
+const IDEAS_COLLECTION_ID = `${import.meta.env.VITE_APPWRITE_IDEAS_COLLECTION_ID}`;
 
 const IdeasContext = createContext();
 
@@ -16,8 +18,8 @@ export function IdeasProvider(props) {
   async function add(idea) {
     try {
       const response = await databases.createDocument(
-        `${import.meta.env.VITE_APPWRITE_IDEAS_DATABASE_ID}`,
-        `${import.meta.env.VITE_APPWRITE_IDEAS_COLLECTION_ID}`,
+        IDEAS_DATABASE_ID,
+        IDEAS_COLLECTION_ID,
         ID.unique(),
         idea
       );
