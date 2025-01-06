@@ -7,10 +7,11 @@ import Navbar from '../navbar/Navbar';
 
 const Header = () => {
   const [openSideMenu, setOpenSideMenu] = useState(false)
+  
   return (
     <header>
         <div className='logo-container'>
-            <Link to="/" className='logo'><TipsAndUpdatesIcon />Idea Tracker</Link>
+            <Link to="/" className='logo'><TipsAndUpdatesIcon />Project Tracker</Link>
         </div>
         <div className='navbar-container'>
             <Navbar />

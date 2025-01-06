@@ -31,7 +31,7 @@ function Navbar() {
               Home
             </Link>
           </li>
-          <li className="nav-list">
+          <li className="nav-list" style={{display: "none"}}>
             <Link to="/ask-gpt" className="nav-item">
               Ask GPT
             </Link>
